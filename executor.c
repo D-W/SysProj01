@@ -33,25 +33,28 @@ void execute_command(char * s) {
     if (strcmp(arrArg[0], "exit") == 0) {
         exit(0);
     }
-
     //check if command is "cd", if so, chdir(arrArg[1]);
     else if (strcmp(arrArg[0], "cd") == 0) {
         if (arrArg[1]) {
+            printf("%s", "Has arrArg[1]\n");
             chdir(arrArg[1]);
         }
         else {
+            printf("%s", "Does not have arrArg[1]\n");
             chdir(getenv("HOME"));
         }
     }
     else {
-        int f = fork();
-        int status;
+        int f;
+        f = fork();
+
         //if the process is a child, run the command
         if (f == 0) {
             execvp(arrArg[0], arrArg);
         }
         //if the process is a parent, wait until the child process finishes running
         else {
+            int status;
             wait(&status);
         }
     }

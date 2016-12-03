@@ -25,10 +25,10 @@ int count_tokens(char * line, char * delim) {
     return tokens;
 }
 
-/*
+
 char ** parse_line(char * line, char * delim) {
-    char ** arr = (char **)malloc(1000);
-    printf("test");
+    char ** arr;
+    arr = (char **)malloc(((sizeof(char *)) * (count_tokens(line,delim))));
     char * str = line;
     char * arg;
     int i = 0;
@@ -37,19 +37,4 @@ char ** parse_line(char * line, char * delim) {
         i++;
     }
     return arr;
-}
-*/
-
-
-char ** parse_line(char * line, char * delim) {
-    char * arr[count_tokens(line, delim)];
-    char * str = line;
-    char * arg;
-    int i = 0;
-    while ((arg = strsep(&str, delim)) != NULL) {
-        arr[i] = arg;
-        i++;
-    }
-    char ** ans = arr;
-    return ans;
 }
