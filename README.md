@@ -1,12 +1,15 @@
 #Systems Project 01 by Dylan Wright
 
 Features:
+
     -Forks and executes commands
     -Parses multiple commands on one line
     -Redirects using > and <
 Attempted:
+
     -Could not get pipes to work
 Bugs:
+
     -Cannot directly make run, must make first then make run
     -Entering something that isn't a command causes the program to fork into a child process
     -Sometimes entering a command causes a segmentation fault
