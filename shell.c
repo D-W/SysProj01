@@ -1,21 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <fcntl.h>
 #include <string.h>
 
-#include "executor.c"
+#include "parse.h"
+#include "executor.h"
 
+/*====================void prompt()====================
+Inputs:
+Inputs nothing
+Returns:
+Returns nothing
 
-void prompt(){
+Description:
+1) Gets the username of the current user
+2) Prints the username of the current user
+=======================================================*/
+void prompt() {
     char username[1024];
     getlogin_r(username, 1024);
-    char hostname[1024];
-    gethostname(hostname,1024);
-    char cwd[1024];
-    getcwd(cwd,1024);
-    printf("%s:%s %s$ ", hostname, cwd, username);
+    printf("%s$$$ ", username);
 }
 
+/*====================int main()====================
+Inputs:
+Inputs nothing
+Returns:
+Returns 0
+
+Description:
+1) Prints out a leading prompt
+2) Begin an infinite while loop and await user input
+3) Fgets user input into char input[]
+4) Splits input around ';' into an array of strings of command arrCmd using parse_line(input, ';')
+5) Execute each command in arrCmd in order using a while loop
+6) Print the leading prompt once again before restarting the while loop
+=======================================================*/
 int main() {
 
     prompt();
@@ -27,7 +48,7 @@ int main() {
         input[strlen(input)-1] = '\0';
 
         //take string, split it into array of commands
-        char ** arrCmd = parse_line(input, " ; ");
+        char ** arrCmd = parse_line(input, ';');
 
         //execute each command in order
         int i = 0;

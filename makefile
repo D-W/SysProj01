@@ -1,5 +1,5 @@
 make:
-	clang shell.c -o shell
+	gcc parse.c redirect.c executor.c shell.c -o shell
 
 run: shell
 	./shell
