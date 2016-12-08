@@ -15,7 +15,8 @@ Bugs:
 Files & Function Headers:
 
 shell.c
-    continuously runs the shell functions
+
+    Continuously runs the shell functions
     /*====================void prompt()====================
     Inputs:
     Inputs nothing
@@ -42,7 +43,9 @@ shell.c
     6) Print the leading prompt once again before restarting the while loop
     =======================================================*/
 
+
 parse.c
+
     Handles all line parsing functions
     /*====================char * trim()====================
     Inputs:
@@ -85,7 +88,9 @@ parse.c
     4) Returns newly created array arr
     ============================================================*/
 
+
 executor.c
+
     Handles the forking and execution of commands
     /*====================void executeCommand()====================
     Inputs:
@@ -109,7 +114,9 @@ executor.c
         b) Have the parent process wait until the child has completed the command before moving the next command in the command line
     ===============================================================*/
 
+
 redirect.c
+
     Handles redirection using > and <
     /*====================void redirect()====================
     Inputs:
